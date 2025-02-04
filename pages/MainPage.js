@@ -11,7 +11,7 @@ test('Buy', async ({ page }) => {
     await expect(results).toHaveCountGreaterThan(0); // Проверяем, что есть хотя бы одно объявление
 });
 
-test('Dedault Search', async ({ page }) => {
+test('Default Search', async ({ page }) => { //Default 
     await page.goto('https://kw.com');
 
     await page.fill('SearchInput-input-box', ' '); 
