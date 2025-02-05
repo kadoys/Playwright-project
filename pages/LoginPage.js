@@ -8,19 +8,19 @@ class LoginPage {
     constructor(page) {
         this.page = page;
 
-        // Локаторы элементов
+        
         this.emailInput = page.locator('input[name="email"]'); // Email field
         this.passwordInput = page.locator('input[name="password"]'); // Password field
         this.loginButton = page.locator('button:has-text("Log In")'); // Log in button
         this.forgotPasswordLink = page.locator('text=Forgot Password?'); // Forgot password field
         this.signUpLink = page.locator('text=Sign Up'); // Registration
 
-        // Кнопки соц. логинов
+       
         this.googleLogin = page.locator('button:has-text("Google")');
         this.appleLogin = page.locator('button:has-text("Apple")');
         this.facebookLogin = page.locator('button:has-text("Facebook")');
 
-        // Сообщения об ошибках
+       // Error messages 
         this.errorMessage = page.locator('.error-message'); // Error message
     }
 
@@ -32,7 +32,7 @@ class LoginPage {
     }
 
     /**
-     * Вход в аккаунт
+     * Login
      * @param {string} email
      * @param {string} password
      */
@@ -85,7 +85,7 @@ class LoginPage {
     }
 
     /**
-     * Проверка ошибки при неверных данных
+     * Invalid data
      */
     async verifyErrorMessage(expectedText) {
         await expect(this.errorMessage).toBeVisible();
