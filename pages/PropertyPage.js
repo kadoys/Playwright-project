@@ -47,6 +47,7 @@ test('Test for dropdown and properties', async ({ page }) => {
   await expect(maxPriceInput).toHaveValue('');
 });
 
+test('dropdownButton', async ({ page }) => {
 const dropdownButton = page.locator('button:has-text("Beds & Baths")');
 await dropdownButton.click();
 
@@ -66,6 +67,78 @@ await threePlusBathrooms.click();
 const applyButton = page.locator('button:has-text("Apply")');
 await applyButton.click();
 
+
+
+  //Property dropdown is open
+  const dropdownButton = page.locator('button:has-text("Property Type")');
+  await dropdownButton.click();
+
+  // Verify that dropdown is open
+  const dropdownMenu = page.locator('div[data-testid="property-type-menu"]');
+  await expect(dropdownMenu).toBeVisible();
+
+  // Houses option is selected
+  const housesOption = page.locator('button:has-text("Houses")');
+  await housesOption.click();
+
+  // Verify that Houses option is selected
+  await expect(housesOption).toHaveClass(/selected/); // Проверка, что кнопка стала активной
+
+  // Click Apply button
+  const applyButton = page.locator('button:has-text("Apply")');
+  await applyButton.click();
+
+  // Verify that filter has updated
+  const results = page.locator('div[data-testid="property-list"]');
+  await expect(results).toBeVisible();
+
+  // Reset filter
+  const resetButton = page.locator('button:has-text("Reset")');
+  await resetButton.click();
+
+  // Check that filter has reset
+  await expect(housesOption).not.toHaveClass(/selected/); 
+
+ 
+    //Filter dropdown list
+    const filtersButton = page.locator('button:has-text("Filters")');
+    await filtersButton.click();
+  
+    // Dropdown list o
+    const filtersMenu = page.locator('div[data-testid="filters-menu"]');
+    await expect(filtersMenu).toBeVisible();
+  
+    // Установить минимальную и максимальную цену
+    const minPrice = page.locator('input[placeholder="No Min"]');
+    const maxPrice = page.locator('input[placeholder="No Max"]');
+    await minPrice.fill('500000');
+    await maxPrice.fill('1000000');
+  
+    // Установить количество спален (например, 2+)
+    const twoPlusBedrooms = page.locator('button:has-text("2+")');
+    await twoPlusBedrooms.click();
+  
+    // Установить тип недвижимости "Houses"
+    const housesOption = page.locator('button:has-text("Houses")');
+    await housesOption.click();
+  
+    // Нажать "Apply"
+    const applyButton = page.locator('button:has-text("Apply")');
+    await applyButton.click();
+  
+    // Проверить, что фильтры применились
+    const results = page.locator('div[data-testid="property-list"]');
+    await expect(results).toBeVisible();
+  
+    // Сбросить все фильтры
+    const resetFiltersButton = page.locator('button:has-text("Reset All Filters")');
+    await resetFiltersButton.click();
+  
+    // Проверить, что фильтры сброшены
+    await expect(minPrice).toHaveValue('');
+    await expect(maxPrice).toHaveValue('');
+
+
 // Filter has changed
 const results = page.locator('div[data-testid="property-list"]');
 await expect(results).toBeVisible();
@@ -80,6 +153,7 @@ await expect(results).toBeVisible();
   const mapContainer = page.locator('div.map-container');
   await expect(mapContainer).toBeVisible();
 
+});
 
 
 
