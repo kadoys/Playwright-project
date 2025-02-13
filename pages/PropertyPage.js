@@ -272,10 +272,10 @@ const { expect } = require('@playwright/test');
       this.showResultsButton = 'button:has-text("Show")';
     }
   
-    // Методы для взаимодействия с "Filters"
+    
   
     /**
-     * Открыть фильтры
+     * Open filter
      */
     async openFiltersDropdown() {
       await this.page.click(this.filtersDropdown);
@@ -283,7 +283,7 @@ const { expect } = require('@playwright/test');
   
     /**
      * Select "Features" option
-     * @param {string} feature - Option name(например, "Pond", "Pool", "Garage")
+     * @param {string} feature - Option name(, "Pond", "Pool", "Garage")
      */
     async selectFeature(feature) {
       const features = {
@@ -302,8 +302,8 @@ const { expect } = require('@playwright/test');
     }
   
     /**
-     * Д
-     * @param {string} keywords - Ключевые слова
+     * 
+     * @param {string} keywords - key words
      */
     async addKeywords(keywords) {
       await this.page.fill(this.addKeywordsInput, keywords);
