@@ -198,8 +198,8 @@ const { expect } = require('@playwright/test');
       }
     
       /**
-       * Выбрать тип недвижимости
-       * @param {string} type - Тип недвижимости (houses, apartments, townhomes, condos, coOps, lotsLand, manufactured, multiFamily, other)
+       * Select type
+       * @param {string} type - Type (houses, apartments, townhomes, condos, coOps, lotsLand, manufactured, multiFamily, other)
        */
       async selectPropertyType(type) {
         const options = {
@@ -229,8 +229,6 @@ const { expect } = require('@playwright/test');
       async applyFilters() {
         await this.page.click(this.applyButton);
       }
-    
-
 
       this.page = page;
 
@@ -284,8 +282,8 @@ const { expect } = require('@playwright/test');
     }
   
     /**
-     * Выбрать опцию из секции "Features"
-     * @param {string} feature - Название опции (например, "Pond", "Pool", "Garage")
+     * Select "Features" option
+     * @param {string} feature - Option name(например, "Pond", "Pool", "Garage")
      */
     async selectFeature(feature) {
       const features = {
@@ -304,7 +302,7 @@ const { expect } = require('@playwright/test');
     }
   
     /**
-     * Добавить ключевые слова
+     * Д
      * @param {string} keywords - Ключевые слова
      */
     async addKeywords(keywords) {
@@ -312,7 +310,7 @@ const { expect } = require('@playwright/test');
     }
   
     /**
-     * Установить статус листинга
+     * Set
      * @param {string} status - "active", "pending", "comingSoon"
      */
     async selectListingStatus(status) {
@@ -325,7 +323,7 @@ const { expect } = require('@playwright/test');
     }
   
     /**
-     * Выбрать тип листинга
+     * Listing
      * @param {string} type - "newConstruction", "foreclosure", "shortSale"
      */
     async selectListingType(type) {
@@ -338,9 +336,9 @@ const { expect } = require('@playwright/test');
     }
   
     /**
-     * Включить или выключить переключатель в "Listing Details"
+     * On/OFF listing
      * @param {string} detail - "openHouse" или "priceReduced"
-     * @param {boolean} value - Включить (true) или выключить (false)
+     * @param {boolean} value 
      */
     async toggleListingDetail(detail, value) {
       const toggles = {
@@ -356,14 +354,14 @@ const { expect } = require('@playwright/test');
     }
   
     /**
-     * Сбросить все фильтры
+     * Reset filters
      */
     async resetFilters() {
       await this.page.click(this.resetFiltersButton);
     }
   
     /**
-     * Применить фильтры и показать результаты
+     * Apply result
      */
     async showResults() {
       await this.page.click(this.showResultsButton);
