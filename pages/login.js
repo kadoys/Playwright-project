@@ -1,15 +1,11 @@
 
-const { expect } = require('@playwright/test');
+import { Page } from "playwright/test"
 
 class LoginPage {
-    /**
-     * @param {import('@playwright/test').Page} page
-     */
+   readonly page
     constructor(page) {
         this.page = page;
-
-        
-        this.emailInput = page.locator('input[name="email"]'); // Email field
+        this.username = "#email"
         this.passwordInput = page.locator('input[name="password"]'); // Password field
         this.loginButton = page.locator('button:has-text("Log In")'); // Log in button
         this.forgotPasswordLink = page.locator('text=Forgot Password?'); // Forgot password field
@@ -37,7 +33,7 @@ class LoginPage {
      * @param {string} password
      */
     async login(email, password) {
-        await this.emailInput.fill(email);
+        await this.username.fill(email);
         await this.passwordInput.fill(password);
         await this.loginButton.click();
     }

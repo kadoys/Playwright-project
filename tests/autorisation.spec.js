@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+import {test, expect} from '@playwright/test'
 
 const BASE_URL = 'https://kw.com/';
 const VALID_EMAIL = 'kadoys@gmail.com';
@@ -6,12 +6,17 @@ const VALID_PASSWORD = 'Kriscolfer1!';
 const INVALID_EMAIL = 'invalid@example';
 const INVALID_PASSWORD = 'wrongpass';
 
+
+test.beforeEach(async({page})) =>{
+    await page.goto('https://kw.com/')
+}
+
 //Successful login
 
 test('Successful login with valid credentials', async ({ page }) => {
-    await page.goto(BASE_URL);
+
     await page.fill("[type='email']", VALID_EMAIL);
-    await page.fill("[type='password']", VALID_PASSWORD);
+    await pag e.fill("[type='password']", VALID_PASSWORD);
     await page.click("[//button[@id='submit-button]");
     await expect(page).toHaveURL(BASE_URL); // Check redirect to the dashboard page
 });
