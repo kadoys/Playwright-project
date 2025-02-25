@@ -1,5 +1,12 @@
 
 import { Page } from "playwright/test"
+const BASE_URL = 'https://accounts.kw.com';
+const DASHBOARD = '//kw.com/';
+const VALID_EMAIL = 'kadoys@gmail.com';
+const VALID_PASSWORD = 'Kriscolfer1!';
+const INVALID_EMAIL = 'invalid@example';
+const INVALID_PASSWORD = 'wrongpass';
+
 
 class LoginPage {
    readonly page
@@ -29,14 +36,16 @@ class LoginPage {
 
     /**
      * Login
-     * @param {string} email
-     * @param {string} password
+     * @param {string} VALID_EMAIL
+     * @param {string} VALID_PASSWORD
      */
-    async login(email, password) {
-        await this.username.fill(email);
-        await this.passwordInput.fill(password);
+    async login ( VALID_EMAIL, VALID_PASSWORD) {
+        await this.username.fill(VALID_EMAIL);
+        await this.passwordInput.fill(VALID_PASSWORD)
         await this.loginButton.click();
     }
+
+
 
     /**
      * Log in button is disabled
