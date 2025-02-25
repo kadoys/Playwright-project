@@ -1,47 +1,57 @@
 
 const { expect } = require('@playwright/test');
 
-class LoginPage {
+ export class LoginPage {
     /**
      * @param {import('@playwright/test').Page} page
      */
     constructor(page) {
         this.page = page;
-
-        
-        this.emailInput = page.locator('input[name="email"]'); // Email field
-        this.passwordInput = page.locator('input[name="password"]'); // Password field
+        this.loginButton = page.locator('button:has-text("Log In / Sign Up")');
+        this.logInDiv = page.locator('#submit-button');
+        this.emailInput = page.locator('#email'); // Email field
+        this.passwordInput = page.locator('#password'); // Password field
         this.loginButton = page.locator('button:has-text("Log In")'); // Log in button
         this.forgotPasswordLink = page.locator('text=Forgot Password?'); // Forgot password field
-        this.signUpLink = page.locator('text=Sign Up'); // Registration
-
-       
         this.googleLogin = page.locator('button:has-text("Google")');
         this.appleLogin = page.locator('button:has-text("Apple")');
         this.facebookLogin = page.locator('button:has-text("Facebook")');
+        this.errorMessage = page.locator('.error-message');
 
-       // Error messages 
-        this.errorMessage = page.locator('.error-message'); // Error message
+      
     }
 
     /**
      * Open login page
      */
     async navigate() {
-        await this.page.goto('https://accounts.kw.com/as/authorize'); // 
-    }
+        await this.page.goto('https://kw.com/'); 
+        await this.page.getByRole('button', { name: 'Log In / Sign Up' }).click();
 
+    }
     /**
-     * Login
-     * @param {string} email
-     * @param {string} password
+     * Logins
+     *
+     *
      */
     async login(email, password) {
         await this.emailInput.fill(email);
         await this.passwordInput.fill(password);
-        await this.loginButton.click();
+        
+        if (await this.loginButton.isEnabled()) {
+            await this.loginButton.click();
+        } else {
+            console.log('Кнопка `Login` отключена, клик не выполняется.');
+        }
     }
 
+  /**
+     * Log in button is disabled
+     */
+
+  async getErrorMessage() {
+    return await this.errorMessage.textContent(); 
+  }
     /**
      * Log in button is disabled
      */
@@ -84,13 +94,7 @@ class LoginPage {
         await this.facebookLogin.click();
     }
 
-    /**
-     * Invalid data
-     */
-    async verifyErrorMessage(expectedText) {
-        await expect(this.errorMessage).toBeVisible();
-        await expect(this.errorMessage).toHaveText(expectedText);
-    }
+   
 }
 
 module.exports = { LoginPage };
