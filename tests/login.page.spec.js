@@ -1,5 +1,5 @@
 
-const { test, expect } = require('@playwright/test');
+import { test, expect } from '@playwright/test';
 const { LoginPage } = require('../pages/LoginPage'); 
 
 const BASE_URL = 'https://kw.com/';
@@ -55,13 +55,7 @@ test('Forgot password link redirects to reset page', async ({ page }) => {
 });
 
 // Google authorization
-/*
-test('Login with Google button works', async ({ page }) => {
-    await page.goto(BASE_URL);
-    await page.click('button:has-text("Google")');
-    await expect(page).toHaveURL(/accounts.google.com/);
-});
-*/
+
 
 //'Password input field hides text
 
