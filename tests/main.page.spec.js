@@ -64,8 +64,8 @@ const NUMERICINPUT = '123456'
 
     test('Check numerical input for Rent', async ({ page }) => {
             let mainPage = new MainPage(page);
-            await mainPage.clickRentButton();
             await mainPage.navigate();
+            await mainPage.clickRentButton();
             await mainPage.searchForProperty(NUMERICINPUT);
             await mainPage.clickSearchButton();
             await expect(page.url()).toContain("https://www.kw.com/search");
