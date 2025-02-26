@@ -13,6 +13,7 @@ const { expect } = require('@playwright/test');
         // Buy, Rent, Find and KW Agent
         this.buyTab = page.locator('text=BUY');
         this.rentTab = page.locator('text=RENT');
+        this.kwAgent = page.locator('text= FIND A KW® AGENT')
         this.findAgentTab = page.locator('text=FIND A KW® AGENT');  
         this.searchLink = page.locator('text=Search');
         this.findAgentLink = page.locator('text=Find a KW® Agent');
@@ -51,6 +52,9 @@ async clickRentButton() {
     await this.rentButton.click(); 
 }
 
+async clickkwAgentButton() {
+    await this.rentButton.click(); 
+}
     async goToBuyTab() {
         await this.buyTab.click();
     }
