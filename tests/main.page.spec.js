@@ -48,6 +48,28 @@ const NUMERICINPUT = '123456'
         await mainPage.searchForProperty(FULLCITYNAME);
         await mainPage.clickSearchButton();
         expect(page.url()).toContain("https://www.kw.com/")
+
+
+        test('Check special characters in search', async ({ page }) => {
+            let mainPage = new MainPage(page);
+            await mainPage.navigate();
+            await mainPage.clickRentButton();
+            await mainPage.searchForProperty(query);
+            await mainPage.clickSearchButton();
+            await expect(page.url()).toContain("https://www.kw.com/search");
+            await expect.toHaveText("No Results");
+            ;
+        });
+
+        test('Check numerical input', async ({ page }) => {
+            let mainPage = new MainPage(page);
+            await mainPage.clickRentButton();
+            await mainPage.navigate();
+            await mainPage.searchForProperty(NUMERICINPUT);
+            await mainPage.clickSearchButton();
+            await expect.toHaveText("No Results");
+        });
+
         
 
     });
