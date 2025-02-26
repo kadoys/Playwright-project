@@ -7,7 +7,7 @@ const { expect } = require('@playwright/test');
      */
     constructor(page) {
         this.page = page;
-        this.loginButton = page.locator('button:has-text("Log In / Sign Up")');
+        this.openLogin = page.getByRole('button', { name: 'Log In / Sign Up' });
         this.logInDiv = page.locator('#submit-button');
         this.emailInput = page.locator('#email'); // Email field
         this.passwordInput = page.locator('#password'); // Password field
@@ -26,7 +26,7 @@ const { expect } = require('@playwright/test');
      */
     async navigate() {
         await this.page.goto('https://kw.com/'); 
-        await this.page.getByRole('button', { name: 'Log In / Sign Up' }).click();
+        await this.openLogin.click();
 
     }
     /**
