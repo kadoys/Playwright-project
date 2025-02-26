@@ -36,6 +36,7 @@ const NUMERICINPUT = '123456'
         await mainPage.navigate();
         await mainPage.searchForProperty(NUMERICINPUT);
         await mainPage.clickSearchButton();
+        await expect(page.url()).toContain("https://www.kw.com/search");
         await expect.toHaveText("No Results");
     });
     
@@ -47,7 +48,8 @@ const NUMERICINPUT = '123456'
         await mainPage.clickRentButton();
         await mainPage.searchForProperty(FULLCITYNAME);
         await mainPage.clickSearchButton();
-        expect(page.url()).toContain("https://www.kw.com/")
+        await expect(page.url()).toContain("https://www.kw.com/search");
+        await expect.toHaveText(FULLCITYNAME);
     });
 
     test('Check special characters in search for Rent', async ({ page }) => {
@@ -66,6 +68,7 @@ const NUMERICINPUT = '123456'
             await mainPage.navigate();
             await mainPage.searchForProperty(NUMERICINPUT);
             await mainPage.clickSearchButton();
+            await expect(page.url()).toContain("https://www.kw.com/search");
             await expect.toHaveText("No Results");
         });
 
