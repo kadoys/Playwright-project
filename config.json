@@ -1,0 +1,13 @@
+{
+ "fullCityName": "New York",
+  "query": "N",
+  "numericInput": "123456",
+  "agentName": "Jane",
+   "searchUrl": "https://kw.com/search/",
+  "baseUrl": "https://kw.com/",
+  "validEmail": "Valeriia.Horiuchkina@ventionteams.com",
+  "validPassword": "Kriscolfer654321!",
+  "invalidEmail": "invalid@example",
+ "invalidPassword" : "wrongpass"
+
+}
