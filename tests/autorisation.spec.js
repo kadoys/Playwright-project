@@ -1,10 +1,6 @@
 import {test, expect} from '@playwright/test'
 
-const BASE_URL = 'https://kw.com/';
-const VALID_EMAIL = 'kadoys@gmail.com';
-const VALID_PASSWORD = 'Kriscolfer1!';
-const INVALID_EMAIL = 'invalid@example';
-const INVALID_PASSWORD = 'wrongpass';
+
 
 
 test.beforeEach(async({page}) =>{

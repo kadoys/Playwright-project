@@ -2,11 +2,6 @@
 import { test, expect } from '@playwright/test';
 const { LoginPage } = require('../pages/LoginPage'); 
 
-const BASE_URL = 'https://kw.com/';
-const VALID_EMAIL = 'Valeriia.Horiuchkina@ventionteams.com';
-const VALID_PASSWORD = 'Kriscolfer654321!';
-const INVALID_EMAIL = 'invalid@example';
-const INVALID_PASSWORD = 'wrongpass';
 
 //Successful login
 
